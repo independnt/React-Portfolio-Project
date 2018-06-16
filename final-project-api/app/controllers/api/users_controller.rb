@@ -7,15 +7,17 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    render json: user
+    @user = User.create(user_params)
+    render json: @user
+  end
+
+  def update
+    @user.update
+    render json: @user
   end
 
   def show
     render json: @user
-  end
-
-  def destroy
   end
 
   private
