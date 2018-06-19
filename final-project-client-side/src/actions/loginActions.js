@@ -2,7 +2,6 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchLogin(userObj){
   const data = JSON.stringify(userObj)
-  console.log(data)
   const request = new Request('http://localhost:3000/api/users',{
     method: 'POST',
     body: data,
@@ -12,7 +11,6 @@ export function fetchLogin(userObj){
     }
   })
 
-  console.log(request)
   return function(dispatch){
     dispatch({type: 'SEND_LOGIN'})
     return fetch(request)
