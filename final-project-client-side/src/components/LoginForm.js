@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { fetchLogin } from '../actions/loginActions'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 
@@ -10,26 +11,41 @@ class LoginForm extends React.Component{
       username: '',
       password: ''
     }
-    this.handleOnSubmit = this.handleOnSubmit.bind(this)
+  this.handleOnSubmit = this.handleOnSubmit.bind(this)
   }
 
-  handleOnSubmit(event){
+  handleUserChange = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  handlePassChange = (event) => {
+    this.setState({
+      password: event.target.value
+    })
+  }
+
+  handleOnSubmit = (event) => {
     event.preventDefault();
-    this.props.fetchLogin(this.state.username, this.state.password)
+    const userObj = { username: this.state.username, password: this.state.password }
+    this.props.fetchLogin(userObj)
   }
 
   render(){
     return (
-      <form onSubmit={this.handleOnSubmit}>
+      <form onSubmit={(event) => this.handleOnSubmit(event)}>
         <input
         type="text"
-        value={this.state.username.value}
         placeholder="username"
+        onChange={this.handleUserChange}
+        value={this.state.username}
         />
         <input
         type="password"
-        value={this.state.password.value}
         placeholder="password"
+        onChange={this.handlePassChange}
+        value={this.state.password}
         />
         <input type="submit" value="Sign up"></input>
       </form>
@@ -37,11 +53,6 @@ class LoginForm extends React.Component{
   }
 }
 
-const mapDispatchToProps = () => {
-  return {
-    fetchLogin: fetchLogin
-  }
-}
 
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+export default connect(null, { fetchLogin })(LoginForm)
