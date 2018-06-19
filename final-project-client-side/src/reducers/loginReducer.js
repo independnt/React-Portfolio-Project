@@ -7,7 +7,7 @@ export default function reducer(state = {
     case "SEND_LOGIN":
       return {...state, fetching: true}
     case 'LOGIN_FAILED':
-      return {...state, error: action.payload}
+      return {...state, errors: action.payload}
     case 'LOGIN_SUCCESS':
       return {...state, fetched: true, fetching: false}
     default:

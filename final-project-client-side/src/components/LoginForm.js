@@ -1,4 +1,7 @@
 import React from 'react'
+import { fetchLogin } from '../actions/loginActions'
+import { connect } from 'react-redux'
+
 
 class LoginForm extends React.Component{
   constructor(props){
@@ -10,8 +13,9 @@ class LoginForm extends React.Component{
     this.handleOnSubmit = this.handleOnSubmit.bind(this)
   }
 
-  handleOnSubmit(){
-    this.disp
+  handleOnSubmit(event){
+    event.preventDefault();
+    this.props.fetchLogin(this.state.username, this.state.password)
   }
 
   render(){
@@ -33,6 +37,11 @@ class LoginForm extends React.Component{
   }
 }
 
+const mapDispatchToProps = () => {
+  return {
+    fetchLogin: fetchLogin
+  }
+}
 
 
-export default LoginForm;
+export default connect(null, mapDispatchToProps)(LoginForm)

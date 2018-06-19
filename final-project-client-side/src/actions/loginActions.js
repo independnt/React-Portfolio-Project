@@ -1,10 +1,10 @@
 import fetch from 'isomorphic-fetch'
 
 export function fetchLogin(username, password){
-  const request = Request.new('/api/users')
-  method: 'POST',
+  const request = new Request('http://localhost:3000/api/users')
+  method: 'POST'
   body: {
-    username: username,
+    username: username
     password: password
   }
 
@@ -15,8 +15,8 @@ export function fetchLogin(username, password){
     .then(responseJson => {
       dispatch({type: 'LOGIN_SUCCESS'})
     })
-    .catch(err) => {
+    .catch(err => {
       dispatch({type: 'LOGIN_FAILED'})
-    }
+    })
   }
 }
