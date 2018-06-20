@@ -1,10 +1,10 @@
 import React from 'react'
-import LoginForm from '../components/LoginForm'
+import SignupForm from '../components/SignupForm'
 
 const Login = () =>
 
   <div className="login">
-    <LoginForm />
+    <SignupForm />
   </div>
 
 export default Login;

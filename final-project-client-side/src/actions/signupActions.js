@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-export function fetchLogin(userObj){
+export function fetchSignup(userObj){
   const data = JSON.stringify(userObj)
   const request = new Request('http://localhost:3000/api/users',{
     method: 'POST',

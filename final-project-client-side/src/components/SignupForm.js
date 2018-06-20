@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchLogin } from '../actions/loginActions'
+import { fetchSignup } from '../actions/signupActions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -8,7 +8,7 @@ class LoginForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      username: '',
+      email: '',
       password: ''
     }
   this.handleOnSubmit = this.handleOnSubmit.bind(this)
@@ -16,7 +16,7 @@ class LoginForm extends React.Component{
 
   handleUserChange = (event) => {
     this.setState({
-      username: event.target.value
+      email: event.target.value
     })
   }
 
@@ -28,16 +28,16 @@ class LoginForm extends React.Component{
 
   handleOnSubmit = (event) => {
     event.preventDefault();
-    const userObj = { username: this.state.username, password: this.state.password }
-    this.props.fetchLogin(userObj)
+    const userObj = { email: this.state.email, password: this.state.password }
+    this.props.fetchSignup(userObj)
   }
 
   render(){
     return (
-      <form onSubmit={(event) => this.handleOnSubmit(event)}>
+      <form onSubmit={this.handleOnSubmit}>
         <input
         type="text"
-        placeholder="username"
+        placeholder="email"
         onChange={this.handleUserChange}
         value={this.state.username}
         />
@@ -55,4 +55,4 @@ class LoginForm extends React.Component{
 
 
 
-export default connect(null, { fetchLogin })(LoginForm)
+export default connect(null, { fetchSignup })(LoginForm)
