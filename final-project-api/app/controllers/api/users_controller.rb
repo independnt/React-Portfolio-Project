@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  before_action :authenticate_user, only:[:update, :show]
   before_action :set_user, only:[:show, :update]
 
   def index
@@ -6,7 +7,7 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(username: params[:username], password: params[:password])
+    @user = User.new(email: params[:email], password: params[:password])
     if @user.save
       render json: @user
     else
@@ -26,7 +27,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:email, :password)
   end
 
   def set_user
