@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
+import NavBar from '../components/NavBar'
+import { connect } from 'react-redux'
+import history from '../routes/history'
 
-const UserHome = () => (
 
-  <div className="login">
-    <h1>Welcome to the home page!</h1>
-  </div>
-)
-export default UserHome;
+class UserHome extends React.Component{
+  componentDidMount(){
+    if(!this.props.state.fetched){
+      history.push('/')
+    }
+  }
+  render(){
+    return (
+      <NavBar />
+
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  return { state: state.loginReducer}
+}
+
+export default connect(mapStateToProps)(UserHome);
