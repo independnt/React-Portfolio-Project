@@ -1,13 +1,15 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import history from './history'
 import UserHome from '../containers/UserHome';
 import Login from '../containers/Login';
 
+
 export default () => (
-  <Router>
+  <Router history={history}>
     <div>
-      <Route path="/" exact component={Login}/>
-      <Route path='/home' exact component={UserHome}/>
+      <Route path="/" exact render={props => <Login {...props}/>}/>
+      <Route path='/home' exact render={props => <UserHome {...props}/>}/>
     </div>
   </Router>
 )

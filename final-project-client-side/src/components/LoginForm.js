@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { fetchLogin } from '../actions/loginActions'
 import { connect } from 'react-redux'
+import history from '../routes/history'
 
 class LoginForm extends React.Component{
   constructor(props){
@@ -31,24 +32,31 @@ class LoginForm extends React.Component{
   }
 
   render(){
-    return (
-      <form onSubmit={this.handleOnSubmit}>
-        <input
-        type="text"
-        placeholder="email"
-        onChange={this.handleUserChange}
-        value={this.state.email}
-        />
-        <input
-        type="password"
-        placeholder="password"
-        onChange={this.handlePassChange}
-        value={this.state.password}
-        />
-        <input type="submit" value="Log in"></input>
-      </form>
-    )
-  }
+    if(this.props.state.fetched){
+      history.push('/home')
+    }
+        return (
+          <form onSubmit={this.handleOnSubmit}>
+            <input
+            type="text"
+            placeholder="email"
+            onChange={this.handleUserChange}
+            value={this.state.email}
+            />
+            <input
+            type="password"
+            placeholder="password"
+            onChange={this.handlePassChange}
+            value={this.state.password}
+            />
+            <input type="submit" value="Log in"></input>
+          </form>
+        )
+    }
 }
 
-export default connect (null, { fetchLogin })(LoginForm)
+const mapStateToProps = (state) => {
+  return { state: state.loginReducer}
+}
+
+export default connect (mapStateToProps, { fetchLogin })(LoginForm)
