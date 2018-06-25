@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import States from '../assets/states'
+import { connect } from 'react-redux'
+import { fetchStateResults } from '../actions/searchActions'
+
 
 class SearchForm extends React.Component{
   constructor(){
@@ -10,9 +14,9 @@ class SearchForm extends React.Component{
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleCSSubmit = (event) => {
+  handleStateSubmit = (event) => {
     event.preventDefault();
-
+    this.props.fetchStateResults(this.state.state)
   }
 
   handleChange = (event) => {
@@ -44,19 +48,21 @@ class SearchForm extends React.Component{
             <label>Search by State</label>
               <input
               type="text"
-              name="city"
+              name="state"
               onChange={this.handleChange}
               value={this.state.state}
               placeholder="i.e ny, co ect.."
               />
-              <button onSubmit={this.handleCitySubmit}>Search</button>
+              <button onClick={this.handleStateSubmit}>Search</button>
           </form>
-          {this.state.state}
-          {this.state.cityState}
         </div>
       </div>
     )
   }
 }
 
-export default SearchForm;
+const mapStateToProps = (state) => {
+  return { state: state.searchReducer}
+}
+
+export default connect (mapStateToProps, { fetchStateResults })(SearchForm);
