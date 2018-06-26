@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar'
 import { connect } from 'react-redux'
 import history from '../routes/history'
 import SearchForm from '../components/SearchForm'
+import SearchResults from './SearchResults'
 
 class UserHome extends React.Component{
 
@@ -17,6 +18,7 @@ class UserHome extends React.Component{
       <div>
           <NavBar />
           <SearchForm />
+          <SearchResults />
       </div>
     )
   }

@@ -1,5 +1,6 @@
 export default function reducer(state = {
   user:{},
+  locations:[],
   fetching: false,
   fetched: false,
   errors: null}, action){
