@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 class SearchList extends React.Component{
   handleAdd = (event) => {
     event.preventDefault();
+    console.log("oh yes daddy, press me again.")
   }
   render(){
 
