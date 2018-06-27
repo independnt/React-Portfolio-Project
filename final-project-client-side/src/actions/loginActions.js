@@ -25,7 +25,6 @@ export function fetchLogin(userObj){
 }
 
 export function fetchUser(token){
-  // const header = new Headers(`Authorization`:`Bearer ${token}`, `Conent-Type`:`application/json`)
   const request = new Request(`http://localhost:3000/api/get_user`, {
     method: 'GET',
     headers: {

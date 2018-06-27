@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux'
 
 
 class SearchList extends React.Component{
@@ -27,9 +27,12 @@ class SearchList extends React.Component{
           {listResults}
         </ul>
       </div>
-
     )
   }
 }
 
-export default SearchList
+const mapStateToProps = (state) => {
+  return {state: state.loginReducer}
+}
+
+export default connect(mapStateToProps)(SearchList)
