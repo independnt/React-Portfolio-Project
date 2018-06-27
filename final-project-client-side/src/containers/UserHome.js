@@ -4,12 +4,16 @@ import { connect } from 'react-redux'
 import history from '../routes/history'
 import SearchForm from '../components/SearchForm'
 import SearchResults from './SearchResults'
+import { fetchUser } from '../actions/loginActions'
 
 class UserHome extends React.Component{
 
   componentDidMount(){
     if(!this.props.state.fetched){
       history.push('/')
+    }else{
+      const token = this.props.state.token
+      this.props.fetchUser(token)
     }
   }
 
@@ -28,4 +32,4 @@ const mapStateToProps = (state) => {
   return { state: state.loginReducer}
 }
 
-export default connect(mapStateToProps)(UserHome);
+export default connect(mapStateToProps, { fetchUser })(UserHome);
