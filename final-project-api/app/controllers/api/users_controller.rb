@@ -24,6 +24,14 @@ class Api::UsersController < ApplicationController
     render json: @user
   end
 
+  def get_user
+    authHeader = request.headers['Authorization']
+    jwt = authHeader.split(" ")[1]
+    decoded_token = JWT.decode jwt, Rails.application.secrets.secret_key_base, true, { :algorithm => 'HS256' }
+    current_user = User.find((decoded_token[0])['sub'])
+    render json: current_user
+  end
+
   private
 
   def user_params
