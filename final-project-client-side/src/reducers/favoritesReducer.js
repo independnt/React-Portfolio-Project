@@ -7,10 +7,10 @@ export default function reducer(state = {
     switch(action.type){
       case "SEND_FAVORITE":
         return {...state, adding: true, added: false}
-      case 'LOGIN_FAILED':
+      case 'ADD_FAILED':
         return {...state, errors: action.errors}
       case 'FAVORITE_ADDED':
-        return {...state, added: true, fetching: false}
+        return {...state, added: true, fetching: false, favorites: action.favorite}
       default:
         return state
     }
