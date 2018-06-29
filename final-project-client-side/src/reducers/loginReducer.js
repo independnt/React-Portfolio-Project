@@ -8,7 +8,7 @@ export default function reducer(state = {
     case "SEND_LOGIN":
       return {...state, fetching: true}
     case 'LOGIN_FAILED':
-      return {...state, errors: action.errors}
+      return {...state, errors: "incorrect username or password, please try again"}
     case 'LOGIN_SUCCESS':
       return setToken(state, action.payload)
     case 'GET_USER':
