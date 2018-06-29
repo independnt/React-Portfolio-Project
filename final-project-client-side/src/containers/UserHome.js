@@ -9,7 +9,7 @@ import { fetchUser } from '../actions/loginActions'
 class UserHome extends React.Component{
 
   componentDidMount(){
-    if(!this.props.state.fetched){
+    if(!localStorage.getItem('token')){
       history.push('/')
     }else{
       const token = this.props.state.token

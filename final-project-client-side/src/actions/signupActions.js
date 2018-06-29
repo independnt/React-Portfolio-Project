@@ -12,14 +12,11 @@ export function fetchSignup(userObj){
   })
 
   return function(dispatch){
-    dispatch({type: 'SEND_LOGIN'})
+    dispatch({type: 'SEND_SIGNUP'})
     return fetch(request)
     .then(resp => resp.json())
-    .then(responseJson => {
-      dispatch({type: 'LOGIN_SUCCESS', user: responseJson})
-    })
-    .catch(err => {
-      dispatch({type: 'LOGIN_FAILED'})
+    .then(user => {
+      dispatch({type: 'SIGNUP_SUCCESS', payload: user})
     })
   }
 }

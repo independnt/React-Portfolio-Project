@@ -2,15 +2,22 @@ export default function reducer(state = {
   user:{},
   fetching: false,
   fetched: false,
-  errors: null}, action){
+  errors: {}}, action){
   switch(action.type){
-    case "SEND_LOGIN":
+    case "SEND_SIGNUP":
       return {...state, fetching: true}
-    case 'LOGIN_FAILED':
+    case 'SIGNUP_FAILED':
       return {...state, errors: action.errors}
-    case 'LOGIN_SUCCESS':
-      return {...state, fetched: true, fetching: false, user: action.user}
+    case 'SIGNUP_SUCCESS':
+      return setUser(state, action.payload)
     default:
       return state
   }
+}
+
+function setUser(state, user){
+  return{...state,
+  user: user.id,
+  errors: user.errors,
+  fetched: true}
 }

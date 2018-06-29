@@ -11,12 +11,13 @@ export function fetchLogin(userObj){
     }
   })
 
+
   return function(dispatch){
     dispatch({type: 'SEND_LOGIN'})
     return fetch(request)
     .then(resp => resp.json())
-    .then(responseJson => {
-      dispatch({type: 'LOGIN_SUCCESS', token: responseJson.jwt})
+    .then(token => {
+      dispatch({type: 'LOGIN_SUCCESS', payload: token})
     })
     .catch(err => {
       dispatch({type: 'LOGIN_FAILED'})
@@ -39,5 +40,11 @@ export function fetchUser(token){
     .then(respJson => {
       dispatch({type: 'GOT_USER', user: respJson})
     })
+  }
+}
+
+export function logoutUser() {
+  return(dispatch) => {
+    dispatch({type: 'LOG_OUT'})
   }
 }
