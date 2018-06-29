@@ -31,6 +31,7 @@ function setToken(state, token){
     ...state,
     fetched: true,
     fetching: false,
+    errors: null,
     token: token.jwt
   }
 }
