@@ -1,5 +1,6 @@
 export default function reducer(state = {
   user:{},
+  token:{},
   fetching: false,
   fetched: false,
   errors: null}, action){
@@ -16,7 +17,7 @@ export default function reducer(state = {
       return {...state, fetching: false, user: action.user}
     case 'LOG_OUT':
       localStorage.removeItem('token')
-      return {...state, fetched: false}
+      return {...state, user:{}, fetched: false, fetching: false, token:{}}
     default:
       return state
   }
