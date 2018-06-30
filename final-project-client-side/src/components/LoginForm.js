@@ -33,25 +33,32 @@ class LoginForm extends React.Component{
 
 
   render(){
+
+    const loginError = this.props.state.errors
+
     if(this.props.state.fetched){
       this.props.history.push('/home')
     }
         return (
-          <form onSubmit={this.handleOnSubmit}>
-            <input
-            type="text"
-            placeholder="email"
-            onChange={this.handleUserChange}
-            value={this.state.email}
-            />
-            <input
-            type="password"
-            placeholder="password"
-            onChange={this.handlePassChange}
-            value={this.state.password}
-            />
-            <input type="submit" value="Log in"></input>
-          </form>
+          <div>
+            <h2>Log in</h2>
+              {loginError ? loginError : null}
+              <form onSubmit={this.handleOnSubmit}>
+                <input
+                type="text"
+                placeholder="email"
+                onChange={this.handleUserChange}
+                value={this.state.email}
+                />
+                <input
+                type="password"
+                placeholder="password"
+                onChange={this.handlePassChange}
+                value={this.state.password}
+                />
+                <input type="submit" value="Log in"></input>
+              </form>
+          </div>
         )
     }
 }
