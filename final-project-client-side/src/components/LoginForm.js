@@ -31,9 +31,10 @@ class LoginForm extends React.Component{
     })
   }
 
+
   render(){
     if(this.props.state.fetched){
-      history.push('/home')
+      this.props.history.push('/home')
     }
         return (
           <form onSubmit={this.handleOnSubmit}>

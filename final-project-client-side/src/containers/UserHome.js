@@ -20,7 +20,6 @@ class UserHome extends React.Component{
   render(){
     return (
       <div>
-          <NavBar />
           <SearchForm />
           <SearchResults />
       </div>

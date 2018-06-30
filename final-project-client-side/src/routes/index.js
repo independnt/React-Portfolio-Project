@@ -8,15 +8,17 @@ import LoginForm from '../components/LoginForm'
 import SignupForm from '../components/SignupForm'
 import Header from '../components/Header'
 import NavBar from '../components/NavBar'
+
+
 export default () => (
   <Router history={history}>
     <div>
-      <NavBar />
-      <Route path="/" exact render={props => <Header {...props}/>}/>
-      <Route path='/home' exact render={props => <UserHome {...props}/>}/>
-      <Route path='/favorites' exact render={props => <Favorites {...props}/>}/>
-      <Route path='/signup' exact render={props => <SignupForm {...props}/>}/>
-      <Route path='/login' exact render={props => <LoginForm {...props}/>}/>
+    <NavBar location={history.location}/>
+        <Route path="/" exact render={props => <Header {...props}/>}/>
+        <Route path='/home' exact render={props => <UserHome {...props}/>}/>
+        <Route path='/favorites' exact render={props => <Favorites {...props}/>}/>
+        <Route path='/signup' exact render={props => <SignupForm {...props}/>}/>
+        <Route path='/login' exact render={props => <LoginForm {...props}/>}/>
     </div>
   </Router>
 )
