@@ -21,6 +21,8 @@ class Api::FavoritesController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @favorite = @user.favorites.find_by(id: params[:id])
     @favorite.destroy
+    @favorites = @user.favorites
+    render json: @favorites, status: 200
   end
 
   private

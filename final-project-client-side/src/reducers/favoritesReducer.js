@@ -4,6 +4,7 @@ export default function reducer(state = {
   added:false,
   fetching:false,
   fetched: false,
+  deleting: false,
   errors: null
 }, action){
     switch(action.type){
@@ -12,11 +13,15 @@ export default function reducer(state = {
       case 'ADD_FAILED':
         return {...state, errors: action.errors}
       case 'FAVORITE_ADDED':
-        return {...state, added: true, fetching: false, favorites: action.favorite}
+        return {...state, added: true, fetching: false}
       case 'GET_FAVORITES':
         return {...state, fetching: true}
       case 'GOT_FAVORITES':
         return {...state, fetching: false, fetched: true, favorites: action.favorites}
+      case 'DELETING_FAVORITE':
+        return {...state, deleting: true}
+      case 'FAVORITE_DELETED':
+        return {...state, deleting: false, favorites: action.favorites}
       default:
         return state
     }

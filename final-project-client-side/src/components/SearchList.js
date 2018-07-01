@@ -9,7 +9,8 @@ class SearchList extends React.Component{
     const target = locations.find((place, index) => index == event.target.dataset.id)
     const targetData = {favorite: {name: target.name, city: target.city, state: target.state, street: target.street, phone: target.phone, url: target.url}}
     const userId = state.user.id
-    const token = state.token
+    const token = localStorage.getItem("token")
+    console.log(targetData)
     this.props.addFavorite(targetData, userId, token)
   }
   render(){

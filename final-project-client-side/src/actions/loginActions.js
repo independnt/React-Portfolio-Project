@@ -38,7 +38,7 @@ export function fetchUser(token){
     return fetch(request)
     .then(resp => resp.json())
     .then(respJson => {
-      dispatch({type: 'GOT_USER', user: respJson})
+      dispatch({type:'GOT_USER', user: respJson})
     })
   }
 }
