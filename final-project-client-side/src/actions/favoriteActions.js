@@ -22,3 +22,24 @@ export function addFavorite(targetData, userId, token){
 
   }
 }
+
+export function getFavorites(userId, token){
+  const request = new Request(`http://localhost:3000/api/users/${userId}/favorites`, {
+    method: 'GET',
+    headers: {
+      "Authorization":`Bearer ${token}`,
+      "Accept":"application/json",
+      "Content-Type":"application/json"
+    }
+  })
+
+  return(dispatch) => {
+    dispatch({type: 'GET_FAVORITES'})
+    return fetch(request)
+    .then(resp => resp.json())
+    .then(responseJson => {
+      dispatch({type: 'GOT_FAVORITES', favorites: responseJson})
+    })
+  }
+
+}
