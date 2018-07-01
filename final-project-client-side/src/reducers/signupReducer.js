@@ -2,7 +2,7 @@ export default function reducer(state = {
   user:{},
   fetching: false,
   fetched: false,
-  errors: {}}, action){
+  errors: null}, action){
   switch(action.type){
     case "SEND_SIGNUP":
       return {...state, fetching: true}

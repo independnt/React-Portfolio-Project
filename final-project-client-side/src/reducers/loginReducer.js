@@ -14,7 +14,7 @@ export default function reducer(state = {
     case 'GET_USER':
       return {...state, fetching: true}
     case 'GOT_USER':
-      return {...state, fetching: false, user: action.user}
+      return setUser(state, action.user)
     case 'LOG_OUT':
       localStorage.removeItem('token')
       return {...state, user:{}, fetched: false, fetching: false, token:{}}
@@ -33,5 +33,16 @@ function setToken(state, token){
     fetching: false,
     errors: null,
     token: token.jwt
+  }
+}
+
+function setUser(state, user){
+  if(user.id){
+    localStorage.setItem('userId', user.id)
+  }
+  return {
+    ...state,
+    fetching: false,
+    user: user.user
   }
 }

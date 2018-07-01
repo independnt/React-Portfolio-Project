@@ -31,27 +31,47 @@ class SignupForm extends React.Component{
     this.props.fetchSignup(userObj)
   }
 
+  handleErrors = (errorArray) => {
+    if(errorArray.hasOwnProperty("password") && errorArray.hasOwnProperty("email")){
+      return "Password and Email can't be blank"
+    }else{
+      return `${Object.keys(errorArray)} ${Object.values(errorArray)}`
+    }
+  }
+
   render(){
+
+    const errors = this.props.state.errors
+
+
     return (
-      <form onSubmit={this.handleOnSubmit}>
-        <input
-        type="text"
-        placeholder="email"
-        onChange={this.handleUserChange}
-        value={this.state.email}
-        />
-        <input
-        type="password"
-        placeholder="password"
-        onChange={this.handlePassChange}
-        value={this.state.password}
-        />
-        <input type="submit" value="Sign up"></input>
-      </form>
+      <div>
+      <h2>Sign up!</h2>
+        {errors ? this.handleErrors(errors) : null}
+          <form onSubmit={this.handleOnSubmit}>
+            <input
+            type="text"
+            placeholder="email"
+            onChange={this.handleUserChange}
+            value={this.state.email}
+            />
+            <input
+            type="password"
+            placeholder="password"
+            onChange={this.handlePassChange}
+            value={this.state.password}
+            />
+            <input type="submit" value="Sign up"></input>
+          </form>
+      </div>
     )
   }
 }
 
+const mapStateToProps = (state) =>{
+  return { state: state.signupReducer}
+}
 
 
-export default connect(null, { fetchSignup })(SignupForm)
+
+export default connect(mapStateToProps, { fetchSignup })(SignupForm)
