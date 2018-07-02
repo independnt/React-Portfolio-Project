@@ -10,7 +10,7 @@ class UserHome extends React.Component{
 
   componentDidMount(){
     if(!localStorage.getItem('token')){
-      history.push('/')
+      this.props.history.push('/')
     }else{
       const token = localStorage.getItem('token')
       this.props.fetchUser(token)

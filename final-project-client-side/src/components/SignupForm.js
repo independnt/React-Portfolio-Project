@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { fetchSignup } from '../actions/signupActions'
 import { connect } from 'react-redux'
-
+import { fetchLogin } from '../actions/loginActions'
 
 class SignupForm extends React.Component{
   constructor(props){
@@ -25,9 +25,23 @@ class SignupForm extends React.Component{
     })
   }
 
+  componentDidMount(){
+    if(localStorage.getItem('token')){
+      this.props.history.push('/home')
+    }
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps.state.fetched === false && this.props.state.fetched === true){
+      const userObj = {auth: { email: this.state.email, password: this.state.password } }
+      this.props.fetchLogin(userObj)
+    }
+  }
+
   handleOnSubmit = (event) => {
     event.preventDefault();
     const userObj = { email: this.state.email, password: this.state.password }
+    const loginObj = {auth: { email: this.state.email, password: this.state.password } }
     this.props.fetchSignup(userObj)
   }
 
@@ -43,6 +57,9 @@ class SignupForm extends React.Component{
 
     const errors = this.props.state.errors
 
+    if(this.props.login.fetched){
+      this.props.history.push('/home')
+    }
 
     return (
       <div>
@@ -69,9 +86,10 @@ class SignupForm extends React.Component{
 }
 
 const mapStateToProps = (state) =>{
-  return { state: state.signupReducer}
+  return { state: state.signupReducer,
+           login: state.loginReducer}
 }
 
 
 
-export default connect(mapStateToProps, { fetchSignup })(SignupForm)
+export default connect(mapStateToProps, { fetchSignup, fetchLogin })(SignupForm)
