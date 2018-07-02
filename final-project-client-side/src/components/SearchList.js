@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { addFavorite } from '../actions/favoriteActions'
+import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 class SearchList extends React.Component{
@@ -23,7 +24,7 @@ class SearchList extends React.Component{
              Street: {location.street}<br/>
              Phone: {location.phone}<br/>
              Website: <a href={`http://` + location.url} target="_blank">{location.url}</a><br/>
-             <button onClick={this.handleAdd.bind(this)} data-id={index}>Add to Favorites</button>
+             <Button onClick={this.handleAdd.bind(this)} data-id={index}>Add to Favorites</Button>
            </li>
          )
        )

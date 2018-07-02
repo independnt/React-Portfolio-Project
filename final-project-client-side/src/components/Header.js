@@ -3,9 +3,11 @@ import React from 'react'
 const Header = () => {
 
   return (
-    <header>
-      <h1>Welcome to BrewView</h1>
-    </header>
+    <div className="frontTitle" align="center">
+      <header>
+        <h1>Welcome to BrewView</h1>
+      </header>
+    </div>
     )
   }
 

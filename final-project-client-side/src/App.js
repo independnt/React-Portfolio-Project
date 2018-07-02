@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import history from './routes/history'
-//import Routes from './routes'
+import './themes/global.js'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserHome from './containers/UserHome';
 import Login from './containers/Login';
@@ -11,7 +11,6 @@ import SignupForm from './components/SignupForm'
 import Header from './components/Header'
 import NavBar from './components/NavBar'
 import NavHolder from './containers/NavHolder'
-import './App.css';
 
 
 

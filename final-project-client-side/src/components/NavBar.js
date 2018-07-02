@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Navbar, Nav } from 'react-bootstrap/lib'
 import { logoutUser } from '../actions/loginActions'
 
 
@@ -33,50 +34,61 @@ class NavBar extends React.Component{
     // const loggedIn = !!localStorage.getItem("token")
 
     const defaultNav = (
-      <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px'}}>
-        <NavLink
-          style={{ marginRight: '10px' }}
-          to="/login"
-        >
-          Login
-        </NavLink>
-        <NavLink
-          style={{ marginRight: '10px' }}
-          to="/signup"
-        >
-          Signup
-        </NavLink>
-      </div>
+      <Navbar.Collapse>
+        <Nav pullRight>
+          <NavLink
+            style={{ marginRight: '10px' }}
+            to="/login"
+          >
+            Login
+          </NavLink>
+          <NavLink
+            style={{ marginRight: '10px' }}
+            to="/signup"
+          >
+            Signup
+          </NavLink>
+        </Nav>
+      </Navbar.Collapse>
     )
 
     const userNav = (
-      <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px'}}>
-        <NavLink
-          style={{ marginRight: '10px' }}
-          to="/home"
-        >
-          Home
-        </NavLink>
-        <NavLink
-          style={{ marginRight: '10px' }}
-          to="/favorites"
-        >
-          Favorites
-        </NavLink>
-        <NavLink
-          style={{ marginRight: '10px' }}
-          to="/"
-          onClick={() => this.logout()}
-        >
-          Logout
-        </NavLink>
-      </div>
+      <Navbar.Collapse>
+        <Nav pullRight>
+          <NavLink
+            style={{ marginRight: '10px' }}
+            to="/home"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            style={{ marginRight: '10px' }}
+            to="/favorites"
+          >
+            Favorites
+          </NavLink>
+          <NavLink
+            style={{ marginRight: '10px' }}
+            to="/"
+            onClick={() => this.logout()}
+          >
+            Logout
+          </NavLink>
+        </Nav>
+      </Navbar.Collapse>
     )
 
 
     return (
       <div>
-        {this.state.isLoggedIn ? userNav : defaultNav}
+        <Navbar collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              BrewView
+            </Navbar.Brand>
+          </Navbar.Header>
+            {this.state.isLoggedIn ? userNav : defaultNav}
+        </Navbar>
       </div>
     )
   }
