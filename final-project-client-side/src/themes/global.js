@@ -3,7 +3,6 @@ import img from '../assets/Beer-2.jpg';
 
 injectGlobal`
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
-@import url("https://fonts.googleapis.com/css?family=Ewert");
 
 body{
     padding: 0;
@@ -19,6 +18,12 @@ body{
 .navbar-default {
   background: #63605f;
   border: none;
+}
+
+.navbar-default .navbar-brand {
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+  color: #ffffff;
 }
 
 .frontTitle {
@@ -46,9 +51,8 @@ text {
   color: #ffffff
 }
 
-.navbar-default .navbar-brand {
+.formTitle {
   font-family: 'Pacifico', cursive;
-  font-size: 25px;
-  color: #ffffff;
 }
+
 `

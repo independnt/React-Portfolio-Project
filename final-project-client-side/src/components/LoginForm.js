@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { fetchLogin } from '../actions/loginActions'
 import { connect } from 'react-redux'
 import history from '../routes/history'
+import { FormHolder } from '../themes/styling'
 
 class LoginForm extends React.Component{
   constructor(props){
@@ -41,23 +42,28 @@ class LoginForm extends React.Component{
     }
         return (
           <div>
-            <h2>Log in</h2>
               {loginError ? loginError : null}
-              <form onSubmit={this.handleOnSubmit}>
-                <input
-                type="text"
-                placeholder="email"
-                onChange={this.handleUserChange}
-                value={this.state.email}
-                />
-                <input
-                type="password"
-                placeholder="password"
-                onChange={this.handlePassChange}
-                value={this.state.password}
-                />
-                <input type="submit" value="Log in"></input>
-              </form>
+              <FormHolder>
+                <form onSubmit={this.handleOnSubmit}>
+                <h2 className="formTitle">Log in</h2>
+                <br/>
+                  <input
+                    type="text"
+                    placeholder="email"
+                    onChange={this.handleUserChange}
+                    value={this.state.email}
+                  />
+                  <input
+                    type="password"
+                    placeholder="password"
+                    onChange={this.handlePassChange}
+                    value={this.state.password}
+                  />
+                  <br/>
+                  <br/>
+                    <input type="submit" value="Log in"></input>
+                </form>
+              </FormHolder>
           </div>
         )
     }

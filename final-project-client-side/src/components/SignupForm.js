@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { fetchSignup } from '../actions/signupActions'
 import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/loginActions'
+import { FormHolder } from '../themes/styling'
 
 class SignupForm extends React.Component{
   constructor(props){
@@ -13,15 +14,9 @@ class SignupForm extends React.Component{
   this.handleOnSubmit = this.handleOnSubmit.bind(this)
   }
 
-  handleUserChange = (event) => {
+  handleChange(event){
     this.setState({
-      email: event.target.value
-    })
-  }
-
-  handlePassChange = (event) => {
-    this.setState({
-      password: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -63,23 +58,30 @@ class SignupForm extends React.Component{
 
     return (
       <div>
-      <h2>Sign up!</h2>
         {errors ? this.handleErrors(errors) : null}
+        <FormHolder>
           <form onSubmit={this.handleOnSubmit}>
+          <h2 className="formTitle">Sign up!</h2>
+          <br/>
             <input
             type="text"
             placeholder="email"
-            onChange={this.handleUserChange}
+            name="email"
+            onChange={this.handleChange}
             value={this.state.email}
             />
             <input
             type="password"
             placeholder="password"
-            onChange={this.handlePassChange}
+            name="password"
+            onChange={this.handleChange}
             value={this.state.password}
             />
+            <br/>
+            <br/>
             <input type="submit" value="Sign up"></input>
           </form>
+        </FormHolder>
       </div>
     )
   }
