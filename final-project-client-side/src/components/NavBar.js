@@ -43,25 +43,9 @@ class NavBar extends React.Component{
 
     const userNav = (
         <Nav pullRight>
-          <NavLink
-            style={{ marginRight: '10px' }}
-            to="/home"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            style={{ marginRight: '10px' }}
-            to="/favorites"
-          >
-            Favorites
-          </NavLink>
-          <NavLink
-            style={{ marginRight: '10px' }}
-            to="/"
-            onClick={() => this.logout()}
-          >
-            Logout
-          </NavLink>
+          <LinkContainer to="/home"><NavItem eventKey={1}>Home</NavItem></LinkContainer>
+          <LinkContainer to="/favorites"><NavItem eventKey={2}>Favorites</NavItem></LinkContainer>
+          <LinkContainer to="/" onClick={() => this.logout()}><NavItem eventKey={3}>Log Out</NavItem></LinkContainer>
         </Nav>
     )
 
