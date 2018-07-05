@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Navbar, Nav } from 'react-bootstrap/lib'
+import { Navbar, Nav, NavItem } from 'react-bootstrap/lib'
+import { LinkContainer } from 'react-router-bootstrap';
 import { logoutUser } from '../actions/loginActions'
 
 
@@ -9,8 +10,10 @@ class NavBar extends React.Component{
   constructor(){
     super();
     this.state = {
-      isLoggedIn: !!localStorage.getItem("token")
+      isLoggedIn: !!localStorage.getItem("token"),
+      key: 1
     }
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   componentWillReceiveProps(nextProps){
@@ -29,31 +32,23 @@ class NavBar extends React.Component{
 
 }
 
+  handleSelect(key) {
+      console.log('selected' + key);
+      this.setState({ key: key });
+    }
+
   render(){
 
     // const loggedIn = !!localStorage.getItem("token")
 
     const defaultNav = (
-      <Navbar.Collapse>
-        <Nav pullRight>
-          <NavLink
-            style={{ marginRight: '10px' }}
-            to="/login"
-          >
-            Login
-          </NavLink>
-          <NavLink
-            style={{ marginRight: '10px' }}
-            to="/signup"
-          >
-            Signup
-          </NavLink>
+        <Nav pullRight bsStyle="pills" activeKey={this.state.key} onSelect={this.handleSelect}>
+          <LinkContainer to="/login"><NavItem eventKey={1} exact="true">Login</NavItem></LinkContainer>
+          <LinkContainer to="/signup"><NavItem eventKey={2} exact="true">Signup</NavItem></LinkContainer>
         </Nav>
-      </Navbar.Collapse>
     )
 
     const userNav = (
-      <Navbar.Collapse>
         <Nav pullRight>
           <NavLink
             style={{ marginRight: '10px' }}
@@ -75,13 +70,12 @@ class NavBar extends React.Component{
             Logout
           </NavLink>
         </Nav>
-      </Navbar.Collapse>
     )
 
 
     return (
       <div>
-        <Navbar collapseOnSelect>
+        <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
               BrewView
