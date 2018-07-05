@@ -3,6 +3,8 @@ import States from '../assets/states'
 import { connect } from 'react-redux'
 import { fetchStateResults } from '../actions/searchActions'
 import { fetchCityResults } from '../actions/searchActions'
+import { SearchHolder } from '../themes/styling'
+import { Button } from 'react-bootstrap/lib'
 
 class SearchForm extends React.Component{
   constructor(){
@@ -35,13 +37,12 @@ class SearchForm extends React.Component{
   render(){
     return (
       <div>
-        <div className="page-title">
-          <h2>Start your search</h2>
-        </div>
-
         <div className="search-form">
+        <SearchHolder>
           <form>
+          <h2 className="searchTitle">Start Your Search</h2>
             <label>Search By City</label>
+            <br/>
               <input
               type="text"
               name="cityState"
@@ -49,9 +50,11 @@ class SearchForm extends React.Component{
               value={this.state.cityState}
               placeholder="i.e new york,ny "
               />
-            <button onClick={this.handleCitySubmit}>Search</button>
-            <h3>Or</h3>
+            <Button bsStyle="warning" onClick={this.handleCitySubmit}>Search</Button>
+            <br/>
+            <br/>
             <label>Search by State</label>
+            <br/>
               <input
               type="text"
               name="state"
@@ -59,8 +62,9 @@ class SearchForm extends React.Component{
               value={this.state.state}
               placeholder="i.e ny, co ect.."
               />
-              <button onClick={this.handleStateSubmit}>Search</button>
+              <Button bsStyle="warning" onClick={this.handleStateSubmit}>Search</Button>
           </form>
+          </SearchHolder>
         </div>
       </div>
     )
