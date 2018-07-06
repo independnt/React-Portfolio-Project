@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { removeFavorite } from '../actions/favoriteActions'
 import { connect } from 'react-redux'
-
+import { FaveItem } from '../themes/styling'
 class FaveList extends React.Component{
 
   handleRemove = (event) => {
@@ -15,14 +15,16 @@ class FaveList extends React.Component{
   render(){
 
     const faveList = this.props.faveList.map((favorite, index) => (
-      <li key={favorite.id}>
-        Name: {favorite.name}<br/>
-        City/State: {favorite.city}/{favorite.state}<br/>
-        Street: {favorite.street}<br/>
-        Phone: {favorite.phone}<br/>
-        Website: <a href={`http://` + favorite.url} target="_blank">{favorite.url}</a><br/>
-        <button onClick={this.handleRemove.bind(this)} data-id={favorite.id}>Remove</button>
-      </li>
+      <FaveItem>
+        <li key={favorite.id}>
+          Name: {favorite.name}<br/>
+          City/State: {favorite.city}/{favorite.state}<br/>
+          Street: {favorite.street}<br/>
+          Phone: {favorite.phone}<br/>
+          Website: <a href={`http://` + favorite.url} target="_blank">{favorite.url}</a><br/>
+          <button onClick={this.handleRemove.bind(this)} data-id={favorite.id}>Remove</button>
+        </li>
+      </FaveItem>
     )
   )
 

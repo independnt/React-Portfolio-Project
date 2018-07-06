@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { addFavorite } from '../actions/favoriteActions'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { SearchItem } from '../themes/styling'
 
 class SearchList extends React.Component{
 
@@ -14,20 +15,23 @@ class SearchList extends React.Component{
     console.log(targetData)
     this.props.addFavorite(targetData, userId, token)
   }
+
   render(){
 
-    const listResults = this.props.locations.map((location, index) =>
-      (
-           <li key={location.id}>
-             Name: {location.name}<br/>
-             City/State: {location.city}/{location.state}<br/>
-             Street: {location.street}<br/>
-             Phone: {location.phone}<br/>
-             Website: <a href={`http://` + location.url} target="_blank">{location.url}</a><br/>
-             <Button onClick={this.handleAdd.bind(this)} data-id={index}>Add to Favorites</Button>
-           </li>
-         )
+    const listResults = this.props.locations.map((location, index) => (
+
+      <SearchItem>
+        <li key={location.id}>
+          Name: {location.name}<br/>
+          City/State: {location.city}/{location.state}<br/>
+          Street: {location.street}<br/>
+          Phone: {location.phone}<br/>
+          Website: <a href={`http://` + location.url} target="_blank">{location.url}</a><br/>
+          <Button onClick={this.handleAdd.bind(this)} data-id={index}>Add to Favorites</Button>
+        </li>
+      </SearchItem>
        )
+     )
 
     return (
       <div>
