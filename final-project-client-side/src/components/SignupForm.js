@@ -3,6 +3,7 @@ import { fetchSignup } from '../actions/signupActions'
 import { connect } from 'react-redux'
 import { fetchLogin } from '../actions/loginActions'
 import { FormHolder } from '../themes/styling'
+import { Errors } from '../themes/styling'
 
 class SignupForm extends React.Component{
   constructor(props){
@@ -12,6 +13,7 @@ class SignupForm extends React.Component{
       password: ''
     }
   this.handleOnSubmit = this.handleOnSubmit.bind(this)
+  this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event){
@@ -58,10 +60,10 @@ class SignupForm extends React.Component{
 
     return (
       <div>
-        {errors ? this.handleErrors(errors) : null}
         <FormHolder>
           <form onSubmit={this.handleOnSubmit}>
           <h2 className="formTitle">Sign up!</h2>
+          {errors ? <Errors>{this.handleErrors(errors)}</Errors> : null}
           <br/>
             <input
             type="text"

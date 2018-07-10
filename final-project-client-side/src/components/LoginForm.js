@@ -3,6 +3,7 @@ import { fetchLogin } from '../actions/loginActions'
 import { connect } from 'react-redux'
 import history from '../routes/history'
 import { FormHolder } from '../themes/styling'
+import { Errors } from '../themes/styling'
 
 class LoginForm extends React.Component{
   constructor(props){
@@ -42,10 +43,10 @@ class LoginForm extends React.Component{
     }
         return (
           <div>
-              {loginError ? loginError : null}
               <FormHolder>
                 <form onSubmit={this.handleOnSubmit}>
                 <h2 className="formTitle">Log in</h2>
+                {loginError ? <Errors>{loginError}</Errors> : null}
                 <br/>
                   <input
                     type="text"

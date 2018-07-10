@@ -42,7 +42,7 @@ export const SearchItem = styled.main `
   width: 300px;
   height: 200px;
   list-style-type: none;
-  background: #ffffff;
+  background: #f2f2f2;
 `;
 
 export const FaveItem = styled.main `
@@ -57,5 +57,11 @@ export const FaveItem = styled.main `
   width: 300px;
   height: 200px;
   list-style-type: none;
-  background: #ffffff;
+  background: #f2f2f2;
+`;
+
+export const Errors = styled.main`
+  font-size: 15px;
+  color: #e56b5e;
+  text-align: center;
 `;
