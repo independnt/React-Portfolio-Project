@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # README
 
 # Brew-View
@@ -24,9 +23,3 @@ Want to contribute to Brew-View? Great! Simply send a pull request with relevant
 This application has a standard MIT license and may be modified, distributed, and used for private or commercial use so long as copyright and licensure is conserved. See link below:
 
 [MIT license for this project](React-Portfolio-Project/LICENSE)
-=======
-Users to log in - authentication
-Users to search locations - call Google API and pull locations
-Users to can add locations to favorites - Favorites page
-Users can remove favorites 
->>>>>>> c7bedcee85ac2d568b7d99d63b21742ce2592ad2
