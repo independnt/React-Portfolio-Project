@@ -17,6 +17,13 @@ class Api::FavoritesController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find_by(id: params[:user_id])
+    @favorite = @user.favorites.find_by(id: params[:id])
+    @favorite.update(like_params)
+    render json: @favorite
+  end
+
   def destroy
     @user = User.find_by(id: params[:user_id])
     @favorite = @user.favorites.find_by(id: params[:id])
@@ -28,6 +35,10 @@ class Api::FavoritesController < ApplicationController
   private
 
   def favorite_params
-    params.require(:favorite).permit(:name, :city, :state, :street, :phone, :url)
+    params.require(:favorite).permit(:name, :city, :state, :street, :phone, :url, :likes)
+  end
+
+  def like_params
+    params.require(:favorite).permit(:likes)
   end
 end

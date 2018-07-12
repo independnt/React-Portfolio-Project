@@ -9,7 +9,7 @@ class SearchList extends React.Component{
   handleAdd = (event) => {
     const { locations, state } = this.props
     const target = locations.find((place, index) => index == event.target.dataset.id)
-    const targetData = {favorite: {name: target.name, city: target.city, state: target.state, street: target.street, phone: target.phone, url: target.url}}
+    const targetData = {favorite: {name: target.name, city: target.city, state: target.state, street: target.street, phone: target.phone, url: target.url, likes: 0}}
     const userId = state.user.id
     const token = localStorage.getItem("token")
     console.log(targetData)
@@ -20,7 +20,7 @@ class SearchList extends React.Component{
 
     const listResults = this.props.locations.map((location, index) => (
 
-      <SearchItem>
+
         <li key={location.id}>
           Name: {location.name}<br/>
           City/State: {location.city}/{location.state}<br/>
@@ -29,7 +29,7 @@ class SearchList extends React.Component{
           Website: <a href={`http://` + location.url} target="_blank">{location.url}</a><br/>
           <Button onClick={this.handleAdd.bind(this)} data-id={index}>Add to Favorites</Button>
         </li>
-      </SearchItem>
+
        )
      )
 

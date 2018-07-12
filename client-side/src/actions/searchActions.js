@@ -20,7 +20,9 @@ export function fetchCityResults(input){
     return (dispatch) => {
       dispatch({type: 'FETCH_DATA'})
         return fetch(`http://beermapping.com/webservice/loccity/${apiKey}/${input}&s=json`)
-        .then(resp => resp.json())
+        .then(resp => {
+          return resp.json()
+        })
         .then(jsonResp => {
           dispatch({type: 'DATA_FETCHED', locations: jsonResp})
         })

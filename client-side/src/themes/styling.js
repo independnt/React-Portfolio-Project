@@ -50,7 +50,7 @@ export const FaveItem = styled.main `
   opacity: 0.80;
   text-align: center;
   border-radius: 10% / 50%;
-  padding-top: 40px;
+  padding-top: 20px;
   margin: auto;
   margin-top: 40px;
   margin-left: 40px;

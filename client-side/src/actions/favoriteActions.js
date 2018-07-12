@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 export function addFavorite(targetData, userId, token){
+  console.log(targetData)
   const request = new Request(`http://localhost:3000/api/users/${userId}/favorites`,{
     method: 'POST',
     body: JSON.stringify(targetData),
@@ -61,6 +62,27 @@ export function removeFavorite(userId, favoriteId, token){
     .then(resp => resp.json())
     .then(responseJson => {
       dispatch({type: 'FAVORITE_DELETED', favorites: responseJson})
+    })
+  }
+}
+
+export function addLike(token, userId, faveId, updateLike){
+  const request = new Request(`http://localhost:3000/api/users/${userId}/favorites/${faveId}`, {
+    method: 'PATCH',
+    body: JSON.stringify(updateLike),
+    headers: {
+      "Authorization":`Bearer ${token}`,
+      "Accept":"application/json",
+      "Content-Type":"application/json"
+    }
+  })
+
+  return(dispatch) => {
+    dispatch({type: 'LIKING_FAVORITE'})
+    return fetch(request)
+    .then(resp => resp.json())
+    .then(responseJson => {
+      dispatch({type: 'LIKED_FAVORITE', favorite: responseJson})
     })
   }
 }

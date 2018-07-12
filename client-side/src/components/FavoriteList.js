@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { removeFavorite } from '../actions/favoriteActions'
 import { connect } from 'react-redux'
 import { FaveItem } from '../themes/styling'
+import LikeButton from './likeButton'
+
 class FaveList extends React.Component{
 
   handleRemove = (event) => {
@@ -11,6 +13,7 @@ class FaveList extends React.Component{
     console.log(token, userId, favoriteId)
     this.props.removeFavorite(userId, favoriteId, token)
   }
+
 
   render(){
 
@@ -23,6 +26,7 @@ class FaveList extends React.Component{
           Phone: {favorite.phone}<br/>
           Website: <a href={`http://` + favorite.url} target="_blank">{favorite.url}</a><br/>
           <button onClick={this.handleRemove.bind(this)} data-id={favorite.id}>Remove</button>
+          <LikeButton likeNumber={favorite.likes} faveId={favorite.id}/>
         </li>
       </FaveItem>
     )
