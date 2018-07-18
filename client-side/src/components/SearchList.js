@@ -19,8 +19,7 @@ class SearchList extends React.Component{
   render(){
 
     const listResults = this.props.locations.map((location, index) => (
-
-
+      <SearchItem key={location.id}>
         <li key={location.id}>
           Name: {location.name}<br/>
           City/State: {location.city}/{location.state}<br/>
@@ -29,7 +28,7 @@ class SearchList extends React.Component{
           Website: <a href={`http://` + location.url} target="_blank">{location.url}</a><br/>
           <Button onClick={this.handleAdd.bind(this)} data-id={index}>Add to Favorites</Button>
         </li>
-
+      </SearchItem>
        )
      )
 
