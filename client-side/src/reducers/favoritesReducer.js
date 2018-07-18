@@ -1,6 +1,7 @@
 export default function reducer(state = {
   favorites:[],
   adding: false,
+  latestFave:[],
   added:false,
   fetching:false,
   fetched: false,
@@ -13,7 +14,7 @@ export default function reducer(state = {
       case 'ADD_FAILED':
         return {...state, errors: action.errors}
       case 'FAVORITE_ADDED':
-        return {...state, added: true, fetching: false}
+        return {...state, added: true, fetching: false, latestFave: action.favorite}
       case 'GET_FAVORITES':
         return {...state, fetching: true}
       case 'GOT_FAVORITES':

@@ -17,7 +17,7 @@ export function addFavorite(targetData, userId, token){
     return fetch(request)
     .then(resp => resp.json())
     .then(responseJson => {
-      dispatch({type: 'FAVORITE_ADDED'})
+      dispatch({type: 'FAVORITE_ADDED', favorite: responseJson})
     }).catch(err => {
       dispatch({type: 'ADD_FAILED'})
     })

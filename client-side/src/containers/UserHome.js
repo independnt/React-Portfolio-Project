@@ -4,6 +4,7 @@ import history from '../routes/history'
 import SearchForm from '../components/SearchForm'
 import SearchResults from './SearchResults'
 import { fetchUser } from '../actions/loginActions'
+import ControlledPopup from '../components/Popup'
 
 class UserHome extends React.Component{
 
@@ -16,9 +17,12 @@ class UserHome extends React.Component{
     }
   }
 
+
+
   render(){
     return (
       <div>
+          <ControlledPopup Fave={this.props.state.latestFave}/>
           <SearchForm />
           <SearchResults />
       </div>
@@ -27,7 +31,7 @@ class UserHome extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  return { state: state.loginReducer}
+  return { state: state.favoritesReducer}
 }
 
 export default connect(mapStateToProps, { fetchUser })(UserHome);
