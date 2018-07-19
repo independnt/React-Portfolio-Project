@@ -27,12 +27,6 @@ class SearchForm extends React.Component{
     this.props.fetchCityResults(this.state.cityState)
   }
 
-  onSelectChanged = (value) => {
-    this.setState({
-      brandSelect: value
-    });
-  }
-
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -67,14 +61,13 @@ class SearchForm extends React.Component{
             <br/>
             <label>Search by State</label>
             <br/>
-            <select name="state" onChange={this.handleChange} value={this.state.state}>
+            <select name="state" onChange={this.handleChange} value={this.state.state} defaultValue="AK">
               {States}
             </select>
               <Button bsStyle="warning" onClick={this.handleStateSubmit}>Search</Button>
           </form>
           </SearchHolder>
         </div>
-        {this.state.state}
       </div>
     )
   }
