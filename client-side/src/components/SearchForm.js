@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import States from '../assets/states'
+import states_hash from '../assets/states'
 import { connect } from 'react-redux'
 import { fetchStateResults } from '../actions/searchActions'
 import { fetchCityResults } from '../actions/searchActions'
@@ -27,21 +27,33 @@ class SearchForm extends React.Component{
     this.props.fetchCityResults(this.state.cityState)
   }
 
+  onSelectChanged = (value) => {
+    this.setState({
+      brandSelect: value
+    });
+  }
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
-
   }
 
+
   render(){
+
+    const States = states_hash.map((state) => (
+      <option value={state}>{state}</option>
+    )
+  )
+
     return (
       <div>
         <div className="search-form">
         <SearchHolder>
           <form>
           <h2 className="searchTitle">Start Your Search</h2>
-            <label>Search By City</label>
+            <label>Search By City/State</label>
             <br/>
               <input
               type="text"
@@ -55,17 +67,14 @@ class SearchForm extends React.Component{
             <br/>
             <label>Search by State</label>
             <br/>
-              <input
-              type="text"
-              name="state"
-              onChange={this.handleChange}
-              value={this.state.state}
-              placeholder="i.e ny, co ect.."
-              />
+            <select name="state" onChange={this.handleChange} value={this.state.state}>
+              {States}
+            </select>
               <Button bsStyle="warning" onClick={this.handleStateSubmit}>Search</Button>
           </form>
           </SearchHolder>
         </div>
+        {this.state.state}
       </div>
     )
   }
