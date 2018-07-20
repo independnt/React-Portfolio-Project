@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 export function addFavorite(targetData, userId, token){
   console.log(targetData)
-  const request = new Request(`http://localhost:3000/api/users/${userId}/favorites`,{
+  const request = new Request(`/api/users/${userId}/favorites`,{
     method: 'POST',
     body: JSON.stringify(targetData),
     headers: {
@@ -26,7 +26,7 @@ export function addFavorite(targetData, userId, token){
 }
 
 export function getFavorites(userId, token){
-  const request = new Request(`http://localhost:3000/api/users/${userId}/favorites`, {
+  const request = new Request(`/api/users/${userId}/favorites`, {
     method: 'GET',
     headers: {
       "Authorization":`Bearer ${token}`,
@@ -47,7 +47,7 @@ export function getFavorites(userId, token){
 }
 
 export function removeFavorite(userId, favoriteId, token){
-  const request = new Request(`http://localhost:3000/api/users/${userId}/favorites/${favoriteId}`,{
+  const request = new Request(`/api/users/${userId}/favorites/${favoriteId}`,{
     method: 'DELETE',
     headers: {
       "Authorization":`Bearer ${token}`,
@@ -67,7 +67,7 @@ export function removeFavorite(userId, favoriteId, token){
 }
 
 export function addLike(token, userId, faveId, updateLike){
-  const request = new Request(`http://localhost:3000/api/users/${userId}/favorites/${faveId}`, {
+  const request = new Request(`/api/users/${userId}/favorites/${faveId}`, {
     method: 'PATCH',
     body: JSON.stringify(updateLike),
     headers: {
