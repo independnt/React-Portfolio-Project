@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 export function fetchStateResults(input){
-  const apiKey = process.env.REACT_APP_BEERDB_KEY
+  const apiKey = process.env.BEERDB_KEY
     return (dispatch) => {
       dispatch({type: 'FETCH_DATA'})
         return fetch(`https://beermapping.com/webservice/locstate/${apiKey}/${input}&s=json`)
@@ -16,7 +16,7 @@ export function fetchStateResults(input){
    }
 
 export function fetchCityResults(input){
-  const apiKey = process.env.REACT_APP_BEERDB_KEY
+  const apiKey = process.env.BEERDB_KEY
     return (dispatch) => {
       dispatch({type: 'FETCH_DATA'})
         return fetch(`https://beermapping.com/webservice/loccity/${apiKey}/${input}&s=json`)
