@@ -4,7 +4,7 @@ export function fetchStateResults(input){
   const apiKey = process.env.REACT_APP_BEERDB_KEY
     return (dispatch) => {
       dispatch({type: 'FETCH_DATA'})
-        return fetch(`http://beermapping.com/webservice/locstate/${apiKey}/${input}&s=json`)
+        return fetch(`https://beermapping.com/webservice/locstate/${apiKey}/${input}&s=json`)
         .then(resp => resp.json())
         .then(jsonResp => {
           dispatch({type: 'DATA_FETCHED', locations: jsonResp})
@@ -19,7 +19,7 @@ export function fetchCityResults(input){
   const apiKey = process.env.REACT_APP_BEERDB_KEY
     return (dispatch) => {
       dispatch({type: 'FETCH_DATA'})
-        return fetch(`http://beermapping.com/webservice/loccity/${apiKey}/${input}&s=json`)
+        return fetch(`https://beermapping.com/webservice/loccity/${apiKey}/${input}&s=json`)
         .then(resp => {
           return resp.json()
         })
