@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchLogin(userObj){
   const data = JSON.stringify(userObj)
-  const request = new Request('http://localhost:3000/api/user_token',{
+  const request = new Request('/api/user_token',{
     method: 'POST',
     body: data,
     headers: {
@@ -26,7 +26,7 @@ export function fetchLogin(userObj){
 }
 
 export function fetchUser(token){
-  const request = new Request(`http://localhost:3000/api/get_user`, {
+  const request = new Request(`/api/get_user`, {
     method: 'GET',
     headers: {
       "Authorization":`Bearer ${token}`,

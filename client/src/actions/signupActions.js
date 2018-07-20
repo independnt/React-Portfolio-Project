@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchSignup(userObj){
   const data = JSON.stringify(userObj)
-  const request = new Request('http://localhost:3000/api/users',{
+  const request = new Request('/api/users',{
     method: 'POST',
     body: data,
     headers: {
