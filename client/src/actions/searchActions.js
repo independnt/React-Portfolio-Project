@@ -2,6 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 export function fetchStateResults(input){
   const apiKey = process.env.BEERDB_KEY
+  console.log(apiKey)
     return (dispatch) => {
       dispatch({type: 'FETCH_DATA'})
         return fetch(`https://beermapping.com/webservice/locstate/${apiKey}/${input}&s=json`)
