@@ -30,7 +30,6 @@ export function fetchUser(token){
     method: 'GET',
     headers: {
       "Authorization":`Bearer ${token}`,
-      "Accept":"application/json",
       "Content-Type":"application/json"
     }
   })
