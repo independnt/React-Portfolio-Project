@@ -16,3 +16,4 @@
 .byebug_history
 /Procfile
 /Procfile.dev
+.env

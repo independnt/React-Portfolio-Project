@@ -18,6 +18,7 @@ gem 'puma', '~> 3.7'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'rest-client'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -26,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-cors'
 gem 'knock'
 gem 'active_model_serializers'
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

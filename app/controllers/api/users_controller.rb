@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_user, only:[:update, :show]
   before_action :set_user, only:[:show, :update]
+  require 'rest-client'
 
   def index
     render json: User.all
@@ -30,6 +31,10 @@ class Api::UsersController < ApplicationController
     decoded_token = JWT.decode jwt, Rails.application.secrets.secret_key_base, true, { :algorithm => 'HS256' }
     current_user = User.find((decoded_token[0])['sub'])
     render json: current_user
+  end
+
+  def get_beer_info
+
   end
 
   private
