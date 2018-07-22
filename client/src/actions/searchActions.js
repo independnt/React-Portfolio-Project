@@ -15,10 +15,9 @@ export function fetchStateResults(input){
    }
 
 export function fetchCityResults(city, state){
-  const cityState = `${city},${state}`
     return (dispatch) => {
       dispatch({type: 'FETCH_DATA'})
-        return fetch(`/api/get_city_info/${cityState}`)
+        return fetch(`/api/get_city_info/${city}/${state}`)
         .then(resp => resp.json())
         .then(jsonResp => {
           dispatch({type: 'DATA_FETCHED', locations: jsonResp})

@@ -46,13 +46,15 @@ class Api::UsersController < ApplicationController
 
   def get_city_info
     apiKey = ENV['BEERDB_KEY']
-    cityState = params[:cityState]
+    city = params[:city]
+    state = params[:state]
+    cityState = `#{city},#{state}`
     url = 'https://beermapping.com/webservice/loccity/' + apiKey + '/' + cityState + '&s=json'
     if response = RestClient.get(url)
       render json: response
     else
       render json: {message: "Something went wrong, enter a valid city/State and try again!"}
-    end 
+    end
   end
 
   private
