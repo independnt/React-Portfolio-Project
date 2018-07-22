@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
   before_action :authenticate_user, only:[:update, :show]
   before_action :set_user, only:[:show, :update]
   require 'rest-client'
+  require 'uri'
 
   def index
     render json: User.all
@@ -46,9 +47,7 @@ class Api::UsersController < ApplicationController
 
   def get_city_info
     apiKey = ENV['BEERDB_KEY']
-    city = params[:city]
-    state = params[:state]
-    cityState = `#{city},#{state}`
+    cityState = URI.encode(params[:cityState])
     url = 'https://beermapping.com/webservice/loccity/' + apiKey + '/' + cityState + '&s=json'
     if response = RestClient.get(url)
       render json: response
