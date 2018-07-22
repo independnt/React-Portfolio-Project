@@ -1,7 +1,7 @@
 class Api::SearchController < ApplicationController
   require 'rest-client'
   require 'uri'
-  
+
   def get_state_info
     apiKey = ENV['BEERDB_KEY']
     state = params[:state]
