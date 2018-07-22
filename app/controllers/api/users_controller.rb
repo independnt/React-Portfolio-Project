@@ -34,7 +34,11 @@ class Api::UsersController < ApplicationController
   end
 
   def get_beer_info
-
+    apiKey = ENV['BEERDB_KEY']
+    state = params[:state]
+    url = 'https://beermapping.com/webservice/locstate/' + apiKey + '/' + state + '&s=json'
+    response = RestClient.get(url)
+    render json: response
   end
 
   private
