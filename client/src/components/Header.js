@@ -1,13 +1,14 @@
 import React from 'react'
 
-const Header = () => {
+class Header extends React.Component{
 
   componentDidMount(){
     if(localStorage.getItem('token')){
       this.props.history.push('/home')
     }
   }
-
+  
+  render(){
   return (
     <div className="frontTitle" align="center">
       <header>
@@ -16,5 +17,7 @@ const Header = () => {
     </div>
     )
   }
+}
+
 
 export default Header;
