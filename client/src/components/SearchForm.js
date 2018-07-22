@@ -11,6 +11,7 @@ class SearchForm extends React.Component{
     super()
     this.state = {
       state: '',
+      city: '',
       cityState: ''
     }
     this.handleChange = this.handleChange.bind(this)
@@ -24,7 +25,7 @@ class SearchForm extends React.Component{
 
   handleCitySubmit = (event) => {
     event.preventDefault();
-    this.props.fetchCityResults(this.state.cityState)
+    this.props.fetchCityResults(this.state.city, this.state.cityState)
   }
 
   handleChange = (event) => {
@@ -51,11 +52,14 @@ class SearchForm extends React.Component{
             <br/>
               <input
               type="text"
-              name="cityState"
+              name="city"
               onChange={this.handleChange}
-              value={this.state.cityState}
+              value={this.state.city}
               placeholder="i.e new york,ny "
               />
+              <select name="cityState" onChange={this.handleChange} value={this.state.cityState} defaultValue="AK">
+                {States}
+              </select>
             <Button bsStyle="warning" onClick={this.handleCitySubmit}>Search</Button>
             <br/>
             <br/>
