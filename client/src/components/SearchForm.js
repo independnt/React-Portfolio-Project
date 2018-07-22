@@ -55,7 +55,6 @@ class SearchForm extends React.Component{
               name="city"
               onChange={this.handleChange}
               value={this.state.city}
-              placeholder="i.e new york,ny "
               />
               <select name="cityState" onChange={this.handleChange} value={this.state.cityState} defaultValue="AK">
                 {States}
